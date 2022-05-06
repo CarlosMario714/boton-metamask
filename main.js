@@ -464,6 +464,9 @@ document.addEventListener("DOMContentLoaded", async function(event) {
   if (window.ethereum) {
     
     const hola = document.getElementById("conectwallet")
+    const acounts = document.querySelector(".showAccount")     
+		
+
 
     hola.addEventListener("click", async (e) => {
        await window.ethereum
@@ -474,12 +477,30 @@ document.addEventListener("DOMContentLoaded", async function(event) {
                                 }
                               ]
                         })
-                       
-                        
-      // ethereum.request({ method: "eth_requestAccounts"})
-    })
 
-    window.addEventListener("click", () => ethereum.on("accountsChanged", console.log(ethereum.selectedAddress)) )
+												const acount2 = await ethereum.request({ method: "eth_requestAccounts"})
+												
+                        console.log(acount2[0])
+											 acounts.innerHTML = acount2[0]
+                    })
+
+			const acount = await ethereum.request({ method: "eth_requestAccounts"})							
+                       
+      console.log(acount[0].length)
+
+    // const disconectedBttn = document.getElementById("disconectwallet")
+ 
+    // window.addEventListener("click", () => {
+	  // ethereum.on('disconnect', () => console.log("paila"))})
+
+		window.addEventListener("click", async () => {
+			if (acount[0].length > 0){
+				console.log("conectado") 
+			} else if (acount[0].length = 0){
+				console.log("conectese")
+			}
+		})
+	
 
       const provider = new ethers.providers.Web3Provider(window.ethereum);
 
@@ -500,19 +521,19 @@ document.addEventListener("DOMContentLoaded", async function(event) {
       
       
       
-    try {
-      const balance = await contract.balanceOf("0x0000000000000000000000000000000000000000")   
-    } catch(error){
-      console.log(error.error.message)
-     }
+    // try {
+    //   const balance = await contract.balanceOf("0x0000000000000000000000000000000000000000")   
+    // } catch(error){
+    //   console.log(error.error.message)
+    //  }
      
   
       
   } else {
     console.error("install metamask")
   }
-
 })
+
 
 
 
