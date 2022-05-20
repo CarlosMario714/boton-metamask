@@ -14,15 +14,16 @@
     <h2> <span class="showAccount"></span></h2>
 
     <div class="numero"> 
-        #NFTs to MINT: <p class="numeroMintear"></p>
-        <button class="btnMenos">-</button>
-        <button class="btnMas">+</button>
+        #NFTs to MINT: <p id="numeroMintear">1</p>
+        <button class="btnMenos" onclick="btnRestar()">-</button>
+        <button class="btnMas" onclick="btnSumar()">+</button>
     </div>
 
     <button class="mint">Mint</button>
 
-    <p class="costoTotal">
-      total:
+    <p>
+      total: <p class="costoTotal"></p>
+      <p class="alerta"></p>
     </p>
 
     <h2 >hash transaction:<a class="hash" href="https://rinkeby.etherscan.io/tx/" target="_blank" ></a></h2>
